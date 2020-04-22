@@ -20,6 +20,7 @@ RUN tar -zxvf nginx-1.15.1.tar.gz && \
     rm -r nginx-1.15.1 nginx-1.15.1.tar.gz dev.zip nginx-rtmp-module-dev
 
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
+COPY web /usr/local/nginx/html/
 
 RUN mkdir /HLS
 EXPOSE 8080
