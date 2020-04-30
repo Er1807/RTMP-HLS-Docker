@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Streaming</title>
+    <link href="/video-js.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        #message-container {
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        #message-container div {
+            background-color: #CCC;
+            padding: 5px;
+        }
+
+        #message-container div:nth-child(2n) {
+            background-color: #FFF;
+        }
+
+        #send-container {
+            position: fixed;
+            padding-bottom: 30px;
+            bottom: 0;
+            background-color: white;
+            max-width: 1200px;
+            width: 80%;
+            display: flex;
+        }
+
+        #message-input {
+            flex-grow: 1;
+        }
+    </style>
+    <script src="/video.js"></script>
+    <script src="/videojs-contrib-hls.js"></script>
+    <script>
+        var player = videojs('video');
+        player.play();
+    </script>
+    <script defer src="socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+
+</head>
+
+<body>
+
+    <video poster="/logo.png" id="video" class="video-js vjs-default-skin" controls preload="auto" width="640"
+        height="268" data-setup='{}'>
+        <source src="/live/test/index.m3u8" type="application/x-mpegURL">
+        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+    </video>
+    <div id="message-container" style="overflow-x: hidden;overflow-y:visible;height:500px;"></div>
+    <form id="send-container">
+        <input type="text" id="message-input">
+        <button type="submit" id="send-button">Send</button>
+    </form>
+</body>
+
+</html>

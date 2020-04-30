@@ -1,0 +1,11 @@
+version: "3.5"
+services:
+    web:
+        build: ./StreamServer
+        ports:
+            - "8084:8080"
+            - "1935:1935"
+    wss:
+        build: ./ChatServer
+        ports:
+            - "3000:3000"

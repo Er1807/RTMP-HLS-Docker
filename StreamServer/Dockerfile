@@ -10,8 +10,6 @@ RUN apt-get update && \
 RUN wget http://nginx.org/download/nginx-1.15.1.tar.gz && \
     wget https://github.com/sergey-dryabzhinsky/nginx-rtmp-module/archive/dev.zip
 
-
-
 RUN tar -zxvf nginx-1.15.1.tar.gz && \
     unzip dev.zip && \
     cd nginx-1.15.1 && \
@@ -20,7 +18,6 @@ RUN tar -zxvf nginx-1.15.1.tar.gz && \
     make install && \
     cd .. && \
     rm -r nginx-1.15.1 nginx-1.15.1.tar.gz dev.zip nginx-rtmp-module-dev
-    
 
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 COPY web /usr/local/nginx/html/
@@ -31,4 +28,4 @@ EXPOSE 1935
 
 STOPSIGNAL SIGTERM
 CMD [ "/usr/local/nginx/sbin/nginx", "-g", "daemon off;" ]
-#http://stream2.er1807.de//live/test/index.m3u8
+#http://stream2.er1807.de/live/test/index.m3u8
